@@ -4,9 +4,38 @@
 
 #ifdef LUA_WIN
 
+typedef unsigned long DWORD;
+typedef long LONG;
+typedef long long LONGLONG;
+
+typedef union _LARGE_INTEGER {
+    struct {
+        DWORD LowPart;
+        LONG HighPart;
+    } DUMMYSTRUCTNAME;
+    struct {
+        DWORD LowPart;
+        LONG HighPart;
+    } u;
+    LONGLONG QuadPart;
+} LARGE_INTEGER;
+
+
+
+#include <sys/utime.h> 	/* High-presision counter */
+
 static int l_clock(lua_State *L) {
-    printf("warning: sys.clock not implemented on Windows\n");
-    return 0;
+	/* printf("warning: sys.clock not implemented on Windows\n");  */
+    LARGE_INTEGER freq = 0;
+	LARGE_INTEGER tm0;
+	
+	if (freq.LowPart == 0 && freq.HighPart == 0)
+	    QueryPerformanceFrequency(&fr);
+	QueryPerformanceCounter(&tm0);
+
+	double precise_time = (double)tm0/(double)freq;
+	lua_pushnumber(L,precise_time);
+	return 1;
 }
 
 static int l_usleep(lua_State *L) {
