@@ -80,6 +80,9 @@ static const struct luaL_reg routines [] = {
   {NULL, NULL}
 };
 
+#ifdef LUA_WIN
+__declspec(dllexport) 
+#endif
 int luaopen_libsys(lua_State *L)
 {
   luaL_openlib(L, "libsys", routines, 0);
