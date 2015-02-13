@@ -1,9 +1,9 @@
 package = "sys"
-version = "1.2-0"
+version = "1.1-0"
 
 source = {
    url = "git://github.com/diz-vara/sys",
-   tag = "1.2-0"
+   tag = "1.1-0"
 }
 
 description = {
