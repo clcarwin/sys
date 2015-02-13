@@ -26,14 +26,14 @@ typedef union _LARGE_INTEGER {
 
 static int l_clock(lua_State *L) {
 	/* printf("warning: sys.clock not implemented on Windows\n");  */
-    LARGE_INTEGER freq = 0;
+    LARGE_INTEGER freq = { 0, 0 };
 	LARGE_INTEGER tm0;
 	
-	if (freq.LowPart == 0 && freq.HighPart == 0)
-	    QueryPerformanceFrequency(&fr);
+	if (freq.u.LowPart == 0 && freq.u.HighPart == 0)
+	    QueryPerformanceFrequency(&freq);
 	QueryPerformanceCounter(&tm0);
 
-	double precise_time = (double)tm0/(double)freq;
+	double precise_time = (double)tm0.QuadPart/(double)freq.QuadPart;
 	lua_pushnumber(L,precise_time);
 	return 1;
 }
