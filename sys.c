@@ -28,6 +28,22 @@ typedef union _LARGE_INTEGER {
 } LARGE_INTEGER;
 
 
+WINBASEAPI
+BOOL
+WINAPI
+QueryPerformanceCounter(
+__out LARGE_INTEGER *lpPerformanceCount
+);
+
+WINBASEAPI
+BOOL
+WINAPI
+QueryPerformanceFrequency(
+__out LARGE_INTEGER *lpFrequency
+);
+
+
+
 
 #include <sys/utime.h> 	/* High-presision counter */
 
