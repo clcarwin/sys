@@ -4,9 +4,16 @@
 
 #ifdef LUA_WIN
 
+#define WINBASEAPI __declspec(dllimport)
+#define WINAPI     __stdcall
+
 typedef unsigned long DWORD;
 typedef long LONG;
 typedef long long LONGLONG;
+typedef int BOOL;
+
+
+
 
 typedef union _LARGE_INTEGER {
     struct {
