@@ -2,7 +2,7 @@ package = "sys"
 version = "1.1-2"
 
 source = {
-   url = "git://github.com/diz-vara/sys",
+   url = "git://github.com/clcarwin/sys",
    tag = "1.1-2"
 }
 
@@ -11,7 +11,7 @@ description = {
    detailed = [[
 Provides system functionalities for Torch.
    ]],
-   homepage = "https://github.com/diz-vara/sys",
+   homepage = "https://github.com/clcarwin/sys",
    license = "BSD"
 }
 
